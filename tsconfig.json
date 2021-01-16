@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "sourceMap": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true, //启用装饰器 @name
     "emitDecoratorMetadata": true
   },
   "include": [
