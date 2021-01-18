@@ -11,7 +11,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id!: number; // ts严格模式下添加非空断言 "!"
 
-  @Column({ length: 3 })
+  @Column()
   username!: string;
 
   @Column()

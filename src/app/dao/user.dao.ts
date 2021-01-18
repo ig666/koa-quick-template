@@ -1,7 +1,7 @@
 // user/user.model.ts 创建实体模型
-import { User } from './user.entity';
+import { User } from '../entities/user.entity';
 import { getRepository, Repository } from 'typeorm';
-import { cryptoPassword } from '../../utils/crypot';
+import { cryptoPassword } from '../utils/crypot';
 import { Injectable } from 'koa-route-decors'; // 导入Injectable装饰器，申明该类可被注入
 
 @Injectable()

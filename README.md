@@ -8,29 +8,30 @@
 ├── logs // 存放日志
 ├── src
 │   ├── app
-│   │   ├── components // 控制器组件
-│   │   │   ├── account
-│   │   │   │   ├── account.controller.ts
-│   │   │   │   └── account.service.ts
-│   │   │   └── user
-│   │   │       ├── user.controller.ts
-│   │   │       └── user.service.ts
 │   │   ├── constants // 常量
 │   │   │   └── index.ts
+│   │   │
+│   │   ├── acontroller // ui层(路由层)
+│   │   │
 │   │   ├── core // 一些核心类或全局引用的方法
 │   │   │   ├── error.ts
 │   │   │   └── logger.ts
+│   │   │
+│   │   ├── dao // 数据库交互层
+│   │   │
 │   │   ├── database // 数据库连接
 │   │   │   └── index.ts
+│   │   │
 │   │   ├── entities // 实体
-│   │   │   └── user
-│   │   │       ├── user.entity.ts
-│   │   │       └── user.model.ts
+│   │   │
 │   │   ├── middleware // 中间件
 │   │   │   ├── error.middleware.ts
 │   │   │   ├── jwt.middleware.ts
 │   │   │   ├── logger.middleware.ts
 │   │   │   └── response.middleware.ts
+│   │   │
+│   │   ├── service // 逻辑层
+│   │   │
 │   │   └── utils // 工具函数
 │   │   │   └── crypto.ts
 │   │	└── app.ts // 应用启动类

@@ -14,34 +14,36 @@ import { resolve } from 'path';
 import { connection } from './database';
 
 export class App {
-    private app: Koa;
-    constructor() {
-        this.app = new Koa();
-        this.init().catch(err => console.log(err));
-    }
+  private app: Koa;
+  constructor() {
+    this.app = new Koa();
+    this.init().catch((err) => console.log(err));
+  }
 
-    // 装配各种中间件
-    private async init() {
-        const router = new Router();
-        const subRouter = await autoRouter(resolve(__dirname, './'));
-        router.use(subRouter.routes(), jwt); // 路由添加jwt验证
-        this.app
-            .use(cors())
-            .use(loggerHandle)
-            .use(errorHandle)
-            .use(body({
-                multipart: true
-            }))
-            .use(router.routes())
-            .use(router.allowedMethods())
-            .use(staticService(resolve(__dirname, '../../static')))
-            .use(responseHandle);
-    }
+  // 装配各种中间件
+  private async init() {
+    const router = new Router();
+    const subRouter = await autoRouter(resolve(__dirname, './'));
+    router.use(subRouter.routes(), jwt); // 路由添加jwt验证
+    this.app
+      .use(cors())
+      .use(loggerHandle)
+      .use(errorHandle)
+      .use(
+        body({
+          multipart: true
+        })
+      )
+      .use(router.routes())
+      .use(router.allowedMethods())
+      .use(staticService(resolve(__dirname, '../../static')))
+      .use(responseHandle);
+  }
 
-    start(port: number) {
-        this.app.listen(port, () => {
-            connection();
-            console.log('service is started');
-        });
-    }
+  start(port: number) {
+    this.app.listen(port, () => {
+      connection();
+      console.log('service is started');
+    });
+  }
 }

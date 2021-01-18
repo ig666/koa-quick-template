@@ -10,6 +10,5 @@ export async function responseHandle(ctx: Context, next: nextProps) {
       message: 'success'
     };
   }
-  console.log('join1=====>',ctx.body)
   await next();
 }

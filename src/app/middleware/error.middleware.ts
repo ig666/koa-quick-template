@@ -4,7 +4,6 @@ export async function errorHandle(ctx: Context, next: nextProps) {
   try {
     await next();
   } catch (err) {
-    console.log('join2======>>>',err)
     if (!err.code) {
       logger.error(err.stack);
     }
