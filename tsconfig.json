@@ -9,8 +9,5 @@
     "experimentalDecorators": true, //启用装饰器 @name
     "emitDecoratorMetadata": true
   },
-  "include": [
-    "src/**/*.ts",
-    "types"
-  ]
+  "include": ["src/**/*.ts", "types/*.ts"]
 }
