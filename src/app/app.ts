@@ -23,7 +23,7 @@ export class App {
   // 装配各种中间件
   private async init() {
     const router = new Router();
-    const subRouter = await autoRouter(resolve(__dirname, './'));
+    const subRouter = await autoRouter(resolve(__dirname, './')); // 默认引入该路径下controller.ts结尾路由;
     router.use(subRouter.routes(), jwt); // 路由添加jwt验证
     this.app
       .use(cors())
