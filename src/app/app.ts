@@ -1,3 +1,4 @@
+// app.ts
 import 'reflect-metadata';
 import * as Koa from 'koa';
 import * as cors from '@koa/cors';
@@ -15,29 +16,32 @@ import { connection } from './database';
 export class App {
     private app: Koa;
     constructor() {
-        this.app = new Koa;
-        this.init().catch(err => console.log(err))
+        this.app = new Koa();
+        this.init().catch(err => console.log(err));
     }
+
+    // 装配各种中间件
     private async init() {
-        const router = new Router
-        const subRouter = await autoRouter(resolve(__dirname, '/'));
-        router.use(subRouter.routes, jwt); // 路由添加jwt验证
+        const router = new Router();
+        const subRouter = await autoRouter(resolve(__dirname, './'));
+        router.use(subRouter.routes(), jwt); // 路由添加jwt验证
         this.app
-             .use(cors()) //跨域中间件
-             .use(loggerHandle)
-             .use(errorHandle)
-             .use(body({
-                 multipart:true
-             }))
-             .use(router.routes())
-             .use(router.allowedMethods)
-             .use(staticService(resolve(__dirname,'../../static')))
-             .use(responseHandle)
+            .use(cors())
+            .use(loggerHandle)
+            .use(errorHandle)
+            .use(body({
+                multipart: true
+            }))
+            .use(router.routes())
+            .use(router.allowedMethods())
+            .use(staticService(resolve(__dirname, '../../static')))
+            .use(responseHandle);
     }
-    start(port:number){
-        this.app.listen(port,()=>{
+
+    start(port: number) {
+        this.app.listen(port, () => {
             connection();
-            console.log(`service start for ${port}`)
-        })
+            console.log('service is started');
+        });
     }
 }

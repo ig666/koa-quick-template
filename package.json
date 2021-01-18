@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "koaweb服务器",
   "main": "app.js",
+  "author": "qi.chen",
+  "license": "ISC",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --config nodemon.json",
+    "serve": "cross-env NODE_ENV=development nodemon --config nodemon.json",
     "compile": "tsc",
     "start": "npm run compile && pm2 start ./bin/www --name app",
     "restart": "npm run compile && pm2 start ./dist/app/app.js",
     "stop": "pm2 stop app"
   },
-  "author": "qi.chen",
-  "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "koa": "^2.13.1",
