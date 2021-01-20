@@ -8,8 +8,8 @@ import {
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id!: number; // ts严格模式下添加非空断言 "!"
+  @PrimaryGeneratedColumn('uuid')
+  id!: string; // ts严格模式下添加非空断言 "!"
 
   @Column()
   username!: string;
