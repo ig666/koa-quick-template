@@ -41,7 +41,7 @@ export class UserModel {
 
   async findAll() {
     const users = await this.repository.find({
-      select: ['id', 'username', 'nickname']
+      select: ['id', 'username', 'nickname','createTime']
     });
     return users;
   }

@@ -29,4 +29,9 @@ export class AccountService {
       throw new CustomError(-1, '用户名或密码错误');
     }
   }
+
+  async getList(){
+    const userList=await this.userModel.findAll()
+    return userList
+  }
 }
