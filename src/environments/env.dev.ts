@@ -8,6 +8,7 @@ export const db: ConnectionOptions = {
   password: '123456',
   database: 'test',
   logging: true,
+  maxQueryExecutionTime:1000, //查询超过1000ms自动记录日志
   synchronize: true,
   timezone: '+08:00',
   dateStrings: true,

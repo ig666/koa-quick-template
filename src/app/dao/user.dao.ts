@@ -7,7 +7,7 @@ import { Injectable } from 'koa-route-decors'; // 导入Injectable装饰器，�
 @Injectable()
 export class UserModel {
   private repository: Repository<User>;
-  private select: (keyof User)[] = ['id', 'username', 'nickname'];
+  private select: (keyof User)[] = ['id', 'username', 'nickname','gender'];
 
   constructor() {
     this.repository = getRepository(User);
@@ -18,7 +18,7 @@ export class UserModel {
     return result;
   }
 
-  async findById(id: number) {
+  async findById(id: string) {
     const user = await this.repository.findOne(id, { select: this.select });
     return user;
   }
@@ -41,7 +41,7 @@ export class UserModel {
 
   async findAll() {
     const users = await this.repository.find({
-      select: ['id', 'username', 'nickname','createTime']
+      select: this.select
     });
     return users;
   }
