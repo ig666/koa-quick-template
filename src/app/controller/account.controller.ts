@@ -6,7 +6,7 @@ import { AccountService } from '../service/account.service';
 
 @Controller()
 export class AccountController {
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService) {}
   @Post()
   async register(ctx: Context, next: () => nextProps) {
     const { username, password, nickname } = ctx.request.body;
@@ -43,11 +43,14 @@ export class AccountController {
   }
 
   @Get()
-  async userList(ctx: Context, next: () => nextProps) {
-    const userList = await this.accountService.getList()
-    ctx.result = {
-      userList
-    }
-    await next()
+  async getListBypage(ctx: Context, next: () => nextProps) {
+    const { username, pageSize, pageIndex } = ctx.request.query;
+    const data = await this.accountService.getListBypage(
+      username,
+      pageSize,
+      pageIndex
+    );
+    ctx.result = data;
+    await next();
   }
 }

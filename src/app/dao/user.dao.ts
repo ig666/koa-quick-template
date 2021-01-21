@@ -7,7 +7,7 @@ import { Injectable } from 'koa-route-decors'; // 导入Injectable装饰器，�
 @Injectable()
 export class UserModel {
   private repository: Repository<User>;
-  private select: (keyof User)[] = ['id', 'username', 'nickname','gender'];
+  private select: (keyof User)[] = ['id', 'username', 'nickname', 'gender'];
 
   constructor() {
     this.repository = getRepository(User);
@@ -44,5 +44,23 @@ export class UserModel {
       select: this.select
     });
     return users;
+  }
+
+  async getListBypage(username: string, pageIndex: number, pageSize: number) {
+    console.log(username, pageIndex, pageSize, 'xxxx');
+    const count = await this.repository.count({ username });
+    const users = await this.repository.find({
+      where: {
+        username: username
+      },
+      skip: pageIndex,
+      take: pageSize,
+      select: this.select
+    });
+    const data = {
+      users,
+      count
+    };
+    return data;
   }
 }

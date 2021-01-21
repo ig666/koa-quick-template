@@ -8,8 +8,8 @@ import {
 } from 'typeorm';
 
 enum Gender {
-  man = 1, //男
-  woman = 2, //女
+  man = 1, // 男
+  woman = 2 // 女
 }
 @Entity()
 export class User {
@@ -22,11 +22,11 @@ export class User {
   @Column()
   password!: string;
 
-  @Column({default:null})
+  @Column({ default: null })
   nickname!: string;
 
   @Column({ type: 'enum', enum: Gender, default: Gender.man })
-  gender!: Gender
+  gender!: Gender;
 
   @CreateDateColumn()
   createTime!: Date;
