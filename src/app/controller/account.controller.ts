@@ -6,9 +6,9 @@ import { AccountService } from '../service/account.service';
 
 @Controller()
 export class AccountController {
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
   @Post()
-  async register(ctx: Context, next: () => nextProps) {
+  async register(ctx: Context, next: nextProps) {
     const { username, password, nickname } = ctx.request.body;
     const result = await this.accountService.insert(
       username,
@@ -24,7 +24,7 @@ export class AccountController {
   }
 
   @Post()
-  async login(ctx: Context, next: () => nextProps) {
+  async login(ctx: Context, next: nextProps) {
     const { username, password } = ctx.request.body;
     // 验证密码并生成token
     const user = await this.accountService.verifyPassword(username, password);
@@ -43,7 +43,7 @@ export class AccountController {
   }
 
   @Get()
-  async getListBypage(ctx: Context, next: () => nextProps) {
+  async getListBypage(ctx: Context, next: nextProps) {
     const { username, pageSize, pageIndex } = ctx.query;
     const data = await this.accountService.getListBypage(
       username,

@@ -7,7 +7,7 @@ import { Injectable } from 'koa-route-decors'; // 导入Injectable装饰器，�
 @Injectable()
 export class UserModel {
   private repository: Repository<User>;
-  private select: (keyof User)[] = ['id', 'username', 'nickname', 'gender'];
+  private select: (keyof User)[] = ['id', 'username', 'nickname', 'gender']; // 遍历User拿到实体键名
 
   constructor() {
     this.repository = getRepository(User);
