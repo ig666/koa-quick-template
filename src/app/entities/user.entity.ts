@@ -3,8 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn,
-  Index
+  UpdateDateColumn
 } from 'typeorm';
 
 enum Gender {
