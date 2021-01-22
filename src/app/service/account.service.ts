@@ -30,7 +30,7 @@ export class AccountService {
     }
   }
 
-  async getListBypage(username: string, pageIndex: number, pageSize: number) {
+  async getListBypage(username: string, pageIndex: number=1, pageSize: number=10) {
     const data = await this.userModel.getListBypage(username, pageIndex, pageSize);
     return data;
   }

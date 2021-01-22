@@ -44,11 +44,11 @@ export class AccountController {
 
   @Get()
   async getListBypage(ctx: Context, next: () => nextProps) {
-    const { username, pageSize, pageIndex } = ctx.request.query;
+    const { username, pageSize, pageIndex } = ctx.query;
     const data = await this.accountService.getListBypage(
       username,
-      pageSize,
-      pageIndex
+      pageIndex,
+      pageSize
     );
     ctx.result = data;
     await next();
