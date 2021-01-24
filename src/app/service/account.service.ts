@@ -6,7 +6,7 @@ import { Injectable } from 'koa-route-decors';
 
 @Injectable()
 export class AccountService {
-  constructor(private userModel: UserModel) { }
+  constructor(private userModel: UserModel) {}
 
   async insert(username: string, password: string, nickname: string) {
     const exist = await this.userModel.findByUsername(username);
@@ -30,8 +30,16 @@ export class AccountService {
     }
   }
 
-  async getListBypage(username: string, pageIndex: number=1, pageSize: number=10) {
-    const data = await this.userModel.getListBypage(username, pageIndex, pageSize);
+  async getListBypage(
+    username: string,
+    pageIndex: number = 1,
+    pageSize: number = 10
+  ) {
+    const data = await this.userModel.getListBypage(
+      username,
+      pageIndex,
+      pageSize
+    );
     return data;
   }
 }

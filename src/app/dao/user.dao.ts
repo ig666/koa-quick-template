@@ -47,11 +47,13 @@ export class UserModel {
   }
 
   async getListBypage(username: string, pageIndex: number, pageSize: number) {
-    let searchData = { username }
-    searchData = JSON.parse(JSON.stringify(searchData, (key: any, value: any) => {
-      if (!value) return undefined
-      return value
-    })) //过滤空字符串和null查询
+    let searchData = { username };
+    searchData = JSON.parse(
+      JSON.stringify(searchData, (key: any, value: any) => {
+        if (!value) return undefined;
+        return value;
+      })
+    ); // 过滤空字符串和null查询
     const count = await this.repository.count(searchData);
     const users = await this.repository.find({
       where: {

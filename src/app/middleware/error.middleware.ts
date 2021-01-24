@@ -1,6 +1,6 @@
 import { Context } from 'koa';
 import { logger } from '../core/logger';
-export async function errorHandle(ctx: Context, next: nextProps) {
+export async function errorHandle(ctx: Context, next: () => Promise<any>) {
   try {
     await next();
   } catch (err) {

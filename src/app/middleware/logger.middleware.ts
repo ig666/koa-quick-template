@@ -2,7 +2,7 @@
 import { Context } from 'koa';
 import { logText, logger } from '../core/logger';
 
-export async function loggerHandle(ctx: Context, next: nextProps) {
+export async function loggerHandle(ctx: Context, next: () => Promise<any>) {
   const satrt = Date.now();
   await next();
   const end = Date.now();

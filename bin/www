@@ -1,4 +1,5 @@
-const env = process.env.NODE_ENV;
+process.env.NODE_ENV='development'
+let env = process.env.NODE_ENV;
 
 let App = null;
 if (env === 'development') {
