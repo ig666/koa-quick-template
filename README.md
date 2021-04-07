@@ -11,7 +11,7 @@
 │   │   ├── constants // 常量
 │   │   │   └── index.ts
 │   │   │
-│   │   ├── acontroller // ui层(路由层)
+│   │   ├── controller // ui层(路由层)
 │   │   │
 │   │   ├── core // 一些核心类或全局引用的方法
 │   │   │   ├── error.ts
