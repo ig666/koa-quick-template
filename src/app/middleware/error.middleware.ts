@@ -3,7 +3,7 @@ import { logger } from '../core/logger';
 export async function errorHandle(ctx: Context, next: () => Promise<any>) {
   try {
     await next();
-  } catch (err) {
+  } catch (err: any) {
     if (!err.code) {
       logger.error(err.stack);
     }

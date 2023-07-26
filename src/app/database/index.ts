@@ -1,24 +1,10 @@
 import {
-  createConnection,
   ConnectionOptions,
   Logger,
   QueryRunner
 } from 'typeorm';
 import { environment } from '../../environments'; // 支持多环境自动导入不同配置,详见environments
 import { mysqlLogger } from '../core/logger';
-
-// 导出连接数据库函数
-export function connection() {
-  const config: ConnectionOptions = environment.db as any;
-  Object.assign(config, { logger: new DbLogger() });
-  createConnection(config)
-    .then(() => {
-      console.log('mysql connect success');
-    })
-    .catch((err) => {
-      mysqlLogger.error(err);
-    });
-}
 
 // 用我们自己的logger来接管typeorm logger
 class DbLogger implements Logger {
@@ -64,3 +50,7 @@ class DbLogger implements Logger {
     }
   }
 }
+
+const config: ConnectionOptions = environment.db as any;
+
+export const dbConfig = Object.assign(config, { logger: new DbLogger() });

@@ -44,7 +44,7 @@ export class AccountController {
 
   @Get()
   async getListBypage(ctx: Context, next: () => Promise<any>) {
-    const { username, pageSize, pageIndex } = ctx.query;
+    const { username, pageSize, pageIndex } = ctx.query as any;
     const data = await this.accountService.getListBypage(
       username,
       pageIndex,
